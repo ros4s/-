@@ -1,6 +1,9 @@
 from datetime import datetime
-import discord, asyncio, datetime, pytz
+import discord, asyncio, pytz
+import json
 
+with open('token.json') as f:
+    json_object = json.load(f)
 intents = discord.Intents.default()
 intents.message_content = True
 
@@ -28,4 +31,4 @@ async def on_message(message):
         embed.set_footer(text="Bot Model by. ros4s", icon_url="이미지링크")
         await message.channel.send(embed=embed)
 
-client.run("MTAyODU3OTM5OTE2MDgzNjE2Nw.GEtbtj.DkL-dQT2NEjujl0JRPJl_KCFDFlE3RWbYyCtQ8")
+client.run(json_object['token'])
